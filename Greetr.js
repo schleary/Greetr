@@ -1,4 +1,5 @@
-(function(global, $) {
+// The ';' makes it safer to run, making sure anything else run before is complete
+;(function(global, $) {
 
 	// setting up a greetr function so that you don't have to call new every time
 	var Greetr = function(firstname, lastname, language) {
@@ -82,6 +83,34 @@
 		setLang: function(lang) {
 			this.language = lang;
 			this.validate();
+			return this;
+		}, 
+
+		HMTLGreeting: functio(selector, formal) {
+
+			if (!$) {
+				throw 'jQuery not loaded';
+			}
+
+			if (!selector) {
+				throw 'Missing jQuery selector';
+			}
+
+			var msg;
+
+			if (formal) {
+
+				msg = this.formalGreeting();
+
+			} else {
+
+				msg = this.greeting();
+
+			}
+
+			$(selector).html(msg);
+
+			// makes it chainable
 			return this;
 		}
 	};
